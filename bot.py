@@ -58,7 +58,7 @@ ircbuff = ircbuff.strip('\r\n') # removing any unnecessary linebreaks.
 print(ircbuff)	#Printing buffer for once.
 del ircbuff	#Deleting buffer for re-use.
 
-ircsend("NICK "+ botnick +"\r\n") # here we actually assign the nick to the bot
+ircsend("NICK "+ botnick +"\r\n") # here we actually assign the nick to the bot 
 print("Sending Nick " + botnick + " to server")
 
 ircsend("USER "+ user + "\r\n") # user authentication
