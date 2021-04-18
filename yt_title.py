@@ -13,7 +13,7 @@ from oauth2client import tools
 from oauth2client.file import Storage 
 import json
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
-
+ytidd="dQw4w9WgXcQ"
 def main(id):
    
     # Disable OAuthlib's HTTPS verification when running locally.
@@ -47,5 +47,4 @@ def main(id):
     return title
 
 if __name__ == "__main__":
-    ytidd="dQw4w9WgXcQ"
     main(ytidd)
