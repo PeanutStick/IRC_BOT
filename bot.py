@@ -45,7 +45,7 @@ def yt_title(buff): # This function responds to a user that inputs "Hello Mybot"
         
         
         #ytidd="dQw4w9WgXcQ"
-        ircsend("PRIVMSG "+ channel +" :Title: "+title.main(ytidd)+"\r\n")
+        ircsend("PRIVMSG "+ channel +" :\x02\x0304Title: "+title.main(ytidd)+"\r\n\x03\x02")
 
 socketHandler = socket.socket(socket.AF_INET, socket.SOCK_STREAM)		#Opening up a normal socket.
 
