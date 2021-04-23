@@ -32,14 +32,10 @@ def yt_title(buff): # To get youtube title
         import yt_title as title
         buff = buff.split("watch?v=")
         buff = buff[1]
-        try:
-                buff = buff.split("&list")
-        except:
-                print("not a list")
-        try:
-                buff = buff.split("?t=")
-        except:
-                print("not shared with time code")
+        if "&list" in buff:
+            buff = buff.split("&list")
+        elif "&t=" in buff:
+            buff = buff.split("&t=")
         ytidd=buff[0] #I should grep btw "watch?v=" and if isset "&list" or "?t="
         #ytidd="dQw4w9WgXcQ"
         ircsend("PRIVMSG "+ channel +" :\x02\x0304Title: "+title.main(ytidd)+"\r\n\x03\x02")
