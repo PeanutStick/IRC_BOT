@@ -1,5 +1,5 @@
 # Import some necessary libraries.
-import socket, ssl
+import socket, ssl, threading
  
 # Some basic variables used to configure the bot
 server = 'irc.evilcorp.ga' # Server
@@ -29,16 +29,16 @@ def coffee(): # This function responds to a user that inputs "Hello Mybot"
         ircsend("PRIVMSG "+ channel +" :  `=='\r\n")
   
 def yt_title(buff): # To get youtube title
-        import yt_title as title
+        import yt_title as title#https://youtu.be/Ss6qf7VbWqI?t=442
         buff = buff.split("watch?v=")
         buff = buff[1]
+        print("after the watch?v="+buff)
         if "&list" in buff:
-            buff = buff.split("&list")
+                buff = buff.split("&list")
         elif "&t=" in buff:
-            buff = buff.split("&t=")
-        ytidd=buff[0] #I should grep btw "watch?v=" and if isset "&list" or "?t="
-        #ytidd="dQw4w9WgXcQ"
-        ircsend("PRIVMSG "+ channel +" :\x02\x0304Title: "+title.main(ytidd)+"\r\n\x03\x02")
+                buff = buff.split("&t=")
+        ytidd=buff
+        ircsend("PRIVMSG "+ channel +" :Title: "+title.main(ytidd)+"\r\n")
         
 def soundcloud_title(buff): # To get Artist and Title af a soundcloud link
         import soundcloud_title as title
@@ -78,8 +78,10 @@ while 1: # Be careful with these! it might send you to an infinite loop
     if ircbuff.find("coffee") != -1: # Bring you a coffee
         coffee()
     if ircbuff.find("watch?v=") != -1: #https://www.youtube.com/watch?v=pxcI5g2iUCg
-        yt_title(ircbuff)
-      
+        thread = threading.Thread(target=yt_title, args=(ircbuff,))
+        thread.start()
+        #yt_title(ircbuff)
+        
     if ircbuff.find("https://soundcloud.com") != -1: #https://soundcloud.com/user-300323425566/6edqtk1tlnfa
         soundcloud_title(ircbuff)    
 
