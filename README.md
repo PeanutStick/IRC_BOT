@@ -5,6 +5,7 @@ This bot is useless for the moment, he can just bring you some coffee.
 # Things done
 -Get Title of a YouTube video.  
 -Get Title of a soundcloud music.  
+-Get Price of a crypto    
 
 # Incomming features
 -Get the price of a crypto or a stock   
