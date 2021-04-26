@@ -6,7 +6,7 @@ server = 'irc.evilcorp.ga' # Server
 port = 6697 # Port
 channel = "#lobby" # Channel
 botnick = "Dovahkiin" # Your bots nick
-password = "xrpbnb8645"
+password = "passwd"
 user = botnick + " " + botnick + " " + botnick + " " + "HODL !" #This is username, hostname, identity and description in the order
 
 def ircsend(msg): #I had to make another function for send() because in python3 and above the socket incoming and outgoing messages are in bytes format. So you have to encode and decode it accordingly.
