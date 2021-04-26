@@ -4,9 +4,10 @@ import socket, ssl, threading
 # Some basic variables used to configure the bot
 server = 'irc.evilcorp.ga' # Server
 port = 6697 # Port
-channel = "#lab" # Channel
-botnick = "Dovahkiin1" # Your bots nick
-user = botnick + " " + botnick + " " + botnick + " " + "a simple irc bot written in python" #This is username, hostname, identity and description in the order
+channel = "#lobby" # Channel
+botnick = "Dovahkiin" # Your bots nick
+password = "xrpbnb8645"
+user = botnick + " " + botnick + " " + botnick + " " + "HODL !" #This is username, hostname, identity and description in the order
 
 def ircsend(msg): #I had to make another function for send() because in python3 and above the socket incoming and outgoing messages are in bytes format. So you have to encode and decode it accordingly.
         ircsock.send(msg.encode('utf-8'))
@@ -58,7 +59,12 @@ def crypto(buff): # This function responds to a user that inputs "Hello Mybot"
                 buff = buff.split(" ")[0]
         print(buff)
         ircsend("PRIVMSG "+ channel +" :"+buff+": "+price.main(buff)+"  \r\n ")
-
+def translat(ircbuff):
+        import translator as tr
+            
+        text = ircbuff.split("PRIVMSG "+ channel +" :")[1]
+        if tr.main(text).src != 'en':
+                ircsend("PRIVMSG "+ channel +" :"+tr.main(text).text+"  \r\n ")
 
 socketHandler = socket.socket(socket.AF_INET, socket.SOCK_STREAM)		#Opening up a normal socket.
 
@@ -78,12 +84,16 @@ print("Sending Nick " + botnick + " to server")
 ircsend("USER "+ user + "\r\n") # user authentication
 print("Sending UserName and hostname and identity and description \"" + user + "\" to server")
 
+
 while 1: # Be careful with these! it might send you to an infinite loop
     ircbuff = ircsock.recv(2048).decode('utf-8') #Receive buffer from the server.
     ircbuff = ircbuff.strip('\r\n') # removing any unnecessary linebreaks.
     print(ircbuff)	#Here we print the buffer from the server.
     if ircbuff.find("PING :") != -1: # if the server pings us then we've got to respond!
         ping(ircbuff)
+    elif ircbuff.find("NOTICE " + botnick + " ::This nickname is registered") != -1:
+        ircsend("/msg NickServ IDENTIFY "+password)
+                
         
     elif ircbuff.find("NOTICE " + botnick + " :*** You are connected to") != -1: #If connected successfully, do the below functions and codes.
         joinchan(channel) # Join the channel using the functions we previously defined
@@ -94,18 +104,24 @@ while 1: # Be careful with these! it might send you to an infinite loop
         coffee()
 
     elif ircbuff.find("$") != -1: # Bring you a coffee
-        thread = threading.Thread(target=crypto, args=(ircbuff,))
-        thread.start()
+        cryptothread = threading.Thread(target=crypto, args=(ircbuff,))
+        cryptothread.start()
         #crypto(ircbuff)
         
     elif ircbuff.find("watch?v=") != -1: #https://www.youtube.com/watch?v=pxcI5g2iUCg
-        thread = threading.Thread(target=yt_title, args=(ircbuff,))
-        thread.start()
+        ytthread = threading.Thread(target=yt_title, args=(ircbuff,))
+        ytthread.start()
         #yt_title(ircbuff)
         
     elif ircbuff.find("https://soundcloud.com") != -1: #https://www.youtube.com/watch?v=pxcI5g2iUCg
-        soundcloud_title(ircbuff)    
-
+        soundcloud_title(ircbuff)
+    elif ircbuff.find("PRIVMSG "+ channel +" :") != -1:
+        trthread = threading.Thread(target=translat, args=(ircbuff,))
+        trthread.start()
+        #translat(ircbuff)
+        
+    
+    
     del ircbuff	#This will clear out the server incoming buffer so that it can be reused for upcoming buffer.
 
 
