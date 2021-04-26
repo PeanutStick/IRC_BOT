@@ -1,5 +1,5 @@
 # IRC_BOT
-Here is an IRC who work with SSL port 6697.  
+Here is an IRC BOT. 
 This bot is useless for the moment, he can just bring you some coffee.
 
 # Things done
