@@ -6,7 +6,7 @@ server = 'irc.evilcorp.ga' # Server
 port = 6697 # Port
 channel = "#lobby" # Channel
 botnick = "Dovahkiin" # Your bots nick
-password = "passwd"
+password = "sjcur5!"
 user = botnick + " " + botnick + " " + botnick + " " + "HODL !" #This is username, hostname, identity and description in the order
 
 def ircsend(msg): #I had to make another function for send() because in python3 and above the socket incoming and outgoing messages are in bytes format. So you have to encode and decode it accordingly.
@@ -61,10 +61,12 @@ def crypto(buff): # This function responds to a user that inputs "Hello Mybot"
         ircsend("PRIVMSG "+ channel +" :"+buff+": "+price.main(buff)+"  \r\n ")
 def translat(ircbuff):
         import translator as tr
-            
-        text = ircbuff.split("PRIVMSG "+ channel +" :")[1]
-        if tr.main(text).src != 'en':
-                ircsend("PRIVMSG "+ channel +" :"+tr.main(text).text+"  \r\n ")
+        text = ircbuff.split("PRIVMSG "+ channel +" :")[1] # to get only the text
+        translate = tr.main(text) # he try to translate 
+        if translate: # if he can translate
+                ircsend("PRIVMSG "+ channel +" :"+str(translate)+"  \r\n ") # he send the message
+
+                
 
 socketHandler = socket.socket(socket.AF_INET, socket.SOCK_STREAM)		#Opening up a normal socket.
 
@@ -116,6 +118,7 @@ while 1: # Be careful with these! it might send you to an infinite loop
     elif ircbuff.find("https://soundcloud.com") != -1: #https://www.youtube.com/watch?v=pxcI5g2iUCg
         soundcloud_title(ircbuff)
     elif ircbuff.find("PRIVMSG "+ channel +" :") != -1:
+        print("beffor thread")
         trthread = threading.Thread(target=translat, args=(ircbuff,))
         trthread.start()
         #translat(ircbuff)
