@@ -13,3 +13,5 @@ This bot is useless for the moment, he can just bring you some coffee.
 -Get the price of a stock and be able to bet on it, with virtual money.   
 -Score board to show who is more active on the server.  
 -Some games like mastermind or blackjack.   
+
+![alt text](https://ibb.co/j4ChSLC)
