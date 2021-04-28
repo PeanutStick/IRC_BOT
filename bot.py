@@ -6,7 +6,7 @@ server = 'irc.evilcorp.ga' # Server
 port = 6697 # Port
 channel = "#lobby" # Channel
 botnick = "Dovahkiin" # Your bots nick
-password = "sjcur5!"
+password = "sdfsdf"
 user = botnick + " " + botnick + " " + botnick + " " + "HODL !" #This is username, hostname, identity and description in the order
 
 def ircsend(msg): #I had to make another function for send() because in python3 and above the socket incoming and outgoing messages are in bytes format. So you have to encode and decode it accordingly.
@@ -65,6 +65,12 @@ def translat(ircbuff):
         translate = tr.main(text) # he try to translate 
         if translate: # if he can translate
                 ircsend("PRIVMSG "+ channel +" :"+str(translate)+"  \r\n ") # he send the message
+def searchyt(ircbuff):
+        import yt_search as yt
+        text = ircbuff.split("PRIVMSG "+ channel +" :")[1] # to get only the text
+        linkyt = yt.main(text)
+        print(linkyt)
+        ircsend("PRIVMSG "+ channel +" :"+str(linkyt)+"\r\n ")
 
                 
 
@@ -104,7 +110,9 @@ while 1: # Be careful with these! it might send you to an infinite loop
     #    hello()
     elif ircbuff.find("coffee") != -1: # Bring you a coffee
         coffee()
-
+    elif ircbuff.find("$search: ") != -1:
+        searchthread = threading.Thread(target=searchyt, args=(ircbuff,))
+        searchthread.start()
     elif ircbuff.find("$") != -1: # Bring you a coffee
         cryptothread = threading.Thread(target=crypto, args=(ircbuff,))
         cryptothread.start()
@@ -117,6 +125,7 @@ while 1: # Be careful with these! it might send you to an infinite loop
         
     elif ircbuff.find("https://soundcloud.com") != -1: #https://www.youtube.com/watch?v=pxcI5g2iUCg
         soundcloud_title(ircbuff)
+    
     elif ircbuff.find("PRIVMSG "+ channel +" :") != -1:
         print("beffor thread")
         trthread = threading.Thread(target=translat, args=(ircbuff,))
@@ -131,8 +140,3 @@ while 1: # Be careful with these! it might send you to an infinite loop
     #1 add a certain code to check whether the ssl connection is still active
     #  if not break the loop
     #2 create a tread to lunch my function 
-
-
-
-    
-    
