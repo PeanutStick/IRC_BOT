@@ -14,9 +14,15 @@ This bot is useless for the moment, he can just bring you some coffee.
 -Score board to show who is more active on the server.  
 -Some games like mastermind or blackjack.   
 
-![alt text](https://i.ibb.co/PC2xd52/title-yt.jpg)
-![alt text](https://i.ibb.co/1JzFRrP/soundcloud-title.jpg)
-![alt text](https://i.ibb.co/kHVHkWg/crypto.jpg)
-![alt text](https://i.ibb.co/phyvhGb/getytlink.jpg)
-![alt text](https://i.ibb.co/vw3Qt61/hexchatchine.jpg)
-![alt text](https://i.ibb.co/RDjHPRS/webclientchina.jpg)
+# Exemples
+## Get Title of a YouTube video.   
+![alt text](https://i.ibb.co/PC2xd52/title-yt.jpg)   
+## Get Title of a soundcloud music.   
+![alt text](https://i.ibb.co/1JzFRrP/soundcloud-title.jpg)   
+## Get Price of a crypto.    
+![alt text](https://i.ibb.co/kHVHkWg/crypto.jpg)   
+## Get music streaming link from a Title Youtube.  
+![alt text](https://i.ibb.co/phyvhGb/getytlink.jpg)   
+## Translate to English.   
+![alt text](https://i.ibb.co/vw3Qt61/hexchatchine.jpg)   
+![alt text](https://i.ibb.co/RDjHPRS/webclientchina.jpg)   
