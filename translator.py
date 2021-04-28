@@ -2,14 +2,12 @@ from googletrans import Translator
 from langdetect import detect
 from textblob import TextBlob
 
-
-
 def main(text):
     text = text.lower()
     if "]:" in text:# because we work with akuma, and he translate psedos from discord
         text = text.split("]:")[1]# I have a problem like this [bleu]: ¯\_(ツ)_/¯
         
-    test_list = ['q(≧▽≦q)', '¯\_(ツ)_/¯','ω',"Σ","д","Д"]# To see if it's an emoji
+    test_list = ['q(≧▽≦q)', '¯\_(ツ)_/¯','ω',"Σ","д","Д","yo","rz","thx :D"]# To see if it's an emoji
     emoji = [ele for ele in test_list if(ele in text)]# he don't have to disable the translator for this, I should remoove the emoji and add it again
     
 
