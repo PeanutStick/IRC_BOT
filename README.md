@@ -15,3 +15,8 @@ This bot is useless for the moment, he can just bring you some coffee.
 -Some games like mastermind or blackjack.   
 
 ![alt text](https://i.ibb.co/PC2xd52/title-yt.jpg)
+![alt text](https://i.ibb.co/1JzFRrP/soundcloud-title.jpg)
+![alt text](https://i.ibb.co/kHVHkWg/crypto.jpg)
+![alt text](https://i.ibb.co/phyvhGb/getytlink.jpg)
+![alt text](https://i.ibb.co/vw3Qt61/hexchatchine.jpg)
+![alt text](https://i.ibb.co/RDjHPRS/webclientchina.jpg)
