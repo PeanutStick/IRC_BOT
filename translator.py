@@ -9,9 +9,17 @@ def main(text):
 
 
     sameletter = text.count(text[0]) == len(text)# if somewone say hhh he will not translate
-
-    if text[0] == " ": # if the first character is a space
-        text = text[1:] # them remoove it
+    space = 1
+    while space == 1:
+        if text[0] == " ": # if the first character is a space
+            text = text[1:] # them remoove it
+            print("remoove beffor")
+        elif text[-1] == " ":
+            text = text[:-1]
+            print("remoove after")
+        else:
+            space = 0
+    
 # I nee to remoove the space to check if the translation is identical as the text
         
     test_list = ['q(≧▽≦q)', '¯\_(ツ)_/¯','ω',"Σ","д","Д","yo","rz","thx :D","kek"," bish "," np"]# To see if it's an emoji
