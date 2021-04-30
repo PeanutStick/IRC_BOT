@@ -1,6 +1,6 @@
 # Import some necessary libraries.
 import socket, ssl, threading
- 
+import score_board as score
 # Some basic variables used to configure the bot
 server = 'irc.evilcorp.ga' # Server
 port = 6697 # Port
@@ -130,6 +130,8 @@ while 1: # Be careful with these! it might send you to an infinite loop
         print("beffor thread")
         trthread = threading.Thread(target=translat, args=(ircbuff,))
         trthread.start()
+        scorethread = threading.Thread(target=score.main, args=(ircbuff,channel,))
+        scorethread.start()
         #translat(ircbuff)
         
     
