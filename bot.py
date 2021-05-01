@@ -28,6 +28,15 @@ def coffee(): # This function responds to a user that inputs "Hello Mybot"
         ircsend("PRIVMSG "+ channel +" :  ,--.\r\n")
         ircsend("PRIVMSG "+ channel +" : C|<3| Here is your coffee !\r\n")
         ircsend("PRIVMSG "+ channel +" :  `=='\r\n")
+def tope(): #
+        top3 = score.top()
+        print(top3)
+        ircsend("PRIVMSG "+ channel +" :1st: "+top3[0][0]+":"+str(top3[0][1])+" | 2nd: "+top3[1][0]+":"+str(top3[1][1])+" | 3rd: "+top3[2][0]+":"+str(top3[2][1])+"\r\n")
+##def score(text): #
+##        my_stat = score.me(text)
+##        print(score)
+##        #ircsend("PRIVMSG "+ channel +" :1st: "+top3[0][0]+":"+str(top3[0][1])+" | 2nd: "+top3[1][0]+":"+str(top3[1][1])+" | 3rd: "+top3[2][0]+":"+str(top3[2][1])+"\r\n")
+
   
 def yt_title(buff): # This function responds to a user that inputs "Hello Mybot"
         import yt_title as title#https://youtu.be/Ss6qf7VbWqI?t=442
@@ -110,6 +119,10 @@ while 1: # Be careful with these! it might send you to an infinite loop
     #    hello()
     elif ircbuff.find("coffee") != -1: # Bring you a coffee
         coffee()
+    elif ircbuff.find("$top") != -1: # Bring you a coffee
+        tope()
+##    elif ircbuff.find("$score") != -1: # Bring you a coffee
+##        score(ircbuff)
     elif ircbuff.find("$search: ") != -1:
         searchthread = threading.Thread(target=searchyt, args=(ircbuff,))
         searchthread.start()
@@ -132,13 +145,16 @@ while 1: # Be careful with these! it might send you to an infinite loop
         trthread.start()
         scorethread = threading.Thread(target=score.main, args=(ircbuff,channel,))
         scorethread.start()
-        #translat(ircbuff)
-        
     
     
     del ircbuff	#This will clear out the server incoming buffer so that it can be reused for upcoming buffer.
-
+         
 
     #1 add a certain code to check whether the ssl connection is still active
     #  if not break the loop
     #2 create a tread to lunch my function 
+
+
+
+    
+    
