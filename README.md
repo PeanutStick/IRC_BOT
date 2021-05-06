@@ -21,7 +21,7 @@ This bot is useless for the moment, he can just bring you some coffee.
 ![alt text](https://i.ibb.co/1JzFRrP/soundcloud-title.jpg)   
 ## Get Price of a crypto.    
 ![alt text](https://i.ibb.co/kHVHkWg/crypto.jpg)   
-## Get music streaming link from a Title Youtube.  
+## Get music streaming link from a Youtube Title.  
 ![alt text](https://i.ibb.co/phyvhGb/getytlink.jpg)   
 ## Translate to English.   
 ![alt text](https://i.ibb.co/vw3Qt61/hexchatchine.jpg)   
